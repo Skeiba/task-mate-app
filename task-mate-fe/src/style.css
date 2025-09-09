@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "tailwindcss";
+
+:root {
+    --theme-transition-duration: 0.25s;
+    --theme-transition-timing: ease-in-out;
+
+    /* Font family */
+    --font-family: "Poppins", sans-serif;
+
+    /* Font weights */
+    --font-title: 700;
+    --font-text: 400;
+    --font-subtext: 300;
+
+    /* Font sizes */
+    --size-h1: 2.25rem;
+    --size-h2: 1.875rem;
+    --size-h3: 1.5rem;
+    --size-text: 1rem;
+    --size-subtext: 0.875rem;
+
+    /* Line heights */
+    --lh-title: 1.2;
+    --lh-text: 1.5;
+    --lh-subtext: 1.4;
+
+    /* Default theme (light) */
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --text-secondary-color: #4a5565;
+    --border-color: #e5e5e5;
+    --bg-secondary-color: #f9fafb;
+
+    --link-color: #3B82F6;
+    --link-hover-color: #2563EB;
+
+    /* Hover background */
+    --hover-bg: #f3f4f6; /* gray-100 */
+}
+
+.light {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+    --text-secondary-color: #4a5565;
+    --border-color: #e5e5e5;
+    --bg-secondary-color: #f9fafb;
+
+    --link-color: #3B82F6;
+    --link-hover-color: #2563EB;
+
+    --hover-bg: #f3f4f6; /* gray-100 */
+}
+
+.dark {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --text-secondary-color: #c7c7c7;
+    --border-color: #404040;
+    --bg-secondary-color: #1e2939;
+
+    --link-color: #60A5FA;
+    --link-hover-color: #3B82F6;
+
+    --hover-bg: #232323; /* subtle gray for dark mode */
+}
+
+/* ======================================================
+   3. Global Resets
+====================================================== */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    transition:
+            background-color var(--theme-transition-duration) var(--theme-transition-timing),
+            color var(--theme-transition-duration) var(--theme-transition-timing),
+            border-color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--size-text);
+    line-height: var(--lh-text);
+    margin: 0;
+}
+
+#root {
+    margin: 0;
+    padding: 0;
+}
+
+/* ======================================================
+   4. Base Layer
+====================================================== */
+@layer base {
+    h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+        font-weight: var(--font-title);
+        line-height: var(--lh-title);
+    }
+
+    h1 { font-size: var(--size-h1); }
+    h2 { font-size: var(--size-h2); }
+    h3 { font-size: var(--size-h3); }
+
+    p {
+        margin: 0;
+        font-weight: var(--font-text);
+        font-size: var(--size-text);
+        line-height: var(--lh-text);
+    }
+
+    small {
+        font-weight: var(--font-subtext);
+        font-size: var(--size-subtext);
+        line-height: var(--lh-subtext);
+    }
+}
+
+/* ======================================================
+   5. Utilities
+====================================================== */
+@layer utilities {
+    /* Typography */
+    .font-title { font-weight: var(--font-title); line-height: var(--lh-title); }
+    .font-text { font-weight: var(--font-text); line-height: var(--lh-text); }
+    .font-subtext { font-weight: var(--font-subtext); line-height: var(--lh-subtext); }
+
+    .text-h1 { font-size: var(--size-h1); }
+    .text-h2 { font-size: var(--size-h2); }
+    .text-h3 { font-size: var(--size-h3); }
+    .text-body { font-size: var(--size-text); }
+    .text-sub { font-size: var(--size-subtext); }
+
+    /* Theme utilities */
+    .bg-color { background-color: var(--bg-color); }
+    .bg-secondary-color { background-color: var(--bg-secondary-color); }
+    .text-theme { color: var(--text-color); }
+    .text-secondary { color: var(--text-secondary-color); }
+    .border-theme { border-color: var(--border-color); }
+
+    /* Hover utility */
+    .hover-theme:hover {
+        background-color: var(--hover-bg);
+        transition: background-color var(--theme-transition-duration) var(--theme-transition-timing);
+    }
+
+    /* Links */
+    .link-color {
+        color: var(--link-color);
+        transition: color var(--theme-transition-duration) var(--theme-transition-timing);
+    }
+    .link-color:hover { color: var(--link-hover-color); }
+}
+
+/* ======================================================
+   6. Components
+====================================================== */
+button {
+    padding: 0.6em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition:
+            border-color 0.25s,
+            background-color var(--theme-transition-duration) var(--theme-transition-timing),
+            color var(--theme-transition-duration) var(--theme-transition-timing);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
