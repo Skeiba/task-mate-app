@@ -22,15 +22,14 @@ public class EmailService {
     @Value("${app.frontend.url}")
     private String frontendUrl;
 
-    //use this when you use Google SMTP for production
-//    @Value("${email.from}")
-//    private String from;
+    @Value("${spring.mail.username}")
+    private String from;
 
     private void sendHtmlEmail(String to, String subject, String htmlContent) {
         try {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, "utf-8");
-//            helper.setFrom(from);
+            helper.setFrom(from);
             helper.setTo(to);
             helper.setSubject(subject);
             helper.setText(htmlContent, true);
