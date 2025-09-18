@@ -142,7 +142,7 @@
 
           <!-- Chat Input -->
           <div class="border-t border-gray-200  p-4">
-            <form @submit.prevent="sendAiMessage" class="flex space-x-2">
+            <form @submit.prevent="sendAiMessage(inputValue)" class="flex space-x-2">
               <input
                   v-model="inputValue"
                   type="text"
@@ -339,9 +339,6 @@ const md = new MarkdownIt({
   breaks: true,
   linkify: true,
 })
-
-
-
 
 watch(messages, scrollToBottom, { deep: true })
 </script>
